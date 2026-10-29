@@ -34,6 +34,11 @@ jobs:
         working-directory: .
         shell: cmd
         continue-on-error: true
+      - name: Terraform Plan
+        run: terraform plan -input=false -out=tfplan
+        working-directory: .
+        shell: cmd
+        
 
 
 
