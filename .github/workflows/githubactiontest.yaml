@@ -1,28 +1,26 @@
-name: "infra pipeline"
+name: Meri first githubpipeline
 
-on: workflow_dispatch
+on: 
+ workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   terraform-job:
     runs-on: self-hosted
+
     steps:
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      - name: Azure Login
+        uses: azure/login@v2.3.0
+        with:
+          client-id: de0e621c-5905-4ce2-b076-72b240df73fa
+          tenant-id: 52d13745-05f9-452f-ad5c-5e18ce96fefa
+          subscription-id: 2ec27507-3c44-4f60-af88-af57aaeeca2f
 
 
 
