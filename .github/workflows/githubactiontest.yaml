@@ -22,13 +22,16 @@ jobs:
           tenant-id: 52d13745-05f9-452f-ad5c-5e18ce96fefa
           subscription-id: 2ec27507-3c44-4f60-af88-af57aaeeca2f
 
-      - name: Terraform Format
-        run: terraform fmt 
-        working-directory: ./terraform
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+        working-directory: .
 
       - name: Terraform Init
-        run: terraform init
-        working-directory: ./terraform
+        id: init
+        run: terraform init -input=false
+        working-directory: .
 
 
 
