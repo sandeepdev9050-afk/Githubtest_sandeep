@@ -1,7 +1,8 @@
+
 name: Meri first githubpipeline
 
-on: 
- workflow_dispatch:
+on:
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -22,16 +23,18 @@ jobs:
           tenant-id: 52d13745-05f9-452f-ad5c-5e18ce96fefa
           subscription-id: 2ec27507-3c44-4f60-af88-af57aaeeca2f
 
-      - name: Terraform fmt
-        id: fmt
-        run: terraform fmt -check
-        continue-on-error: true
-        working-directory: .
-
       - name: Terraform Init
-        id: init
         run: terraform init -input=false
         working-directory: .
+        shell: cmd
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        working-directory: .
+        shell: cmd
+        continue-on-error: true
+
 
 
 
